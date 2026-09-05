@@ -68,8 +68,6 @@ journal-app/
 # 🔗 API Endpoints
 
 The application runs by default on:
-
-```text
 http://localhost:8080
 ```
 

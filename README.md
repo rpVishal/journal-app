@@ -251,7 +251,7 @@ mvnw.cmd spring-boot:run
 
 The application will start at:
 
-```text
+```
 http://localhost:8080
 ```
 

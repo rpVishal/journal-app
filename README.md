@@ -11,11 +11,10 @@ This project demonstrates the fundamentals of building RESTful APIs with Spring 
 - ✍️ Create a new journal entry
 - 📚 Get all journal entries
 - 🔍 Get a journal entry by ID
-- ✏️ Update an existing journal entry
 - 🗑️ Delete a journal entry
 - ❤️ Application health-check endpoint
 - 🌐 RESTful API endpoints
-- ⚡ Fast in-memory data handling
+- 🍃 MongoDB database integration
 
 ---
 
@@ -24,6 +23,8 @@ This project demonstrates the fundamentals of building RESTful APIs with Spring 
 - **Java 17**
 - **Spring Boot**
 - **Spring Web / REST API**
+- **Spring Data MongoDB**
+- **MongoDB**
 - **Maven**
 - **Postman** for API testing
 - **VS Code** for development
@@ -143,41 +144,6 @@ curl http://localhost:8080/journal/id/1
 
 ---
 
-## ✏️ Update a Journal Entry
-
-**PUT**
-
-```http
-/journal/id/{id}
-```
-
-### Example
-
-```http
-PUT /journal/id/1
-```
-
-### Request Body
-
-```json
-{
-  "title": "Updated Journal",
-  "content": "This is my updated journal content."
-}
-```
-
-### cURL
-
-```bash
-curl -X PUT http://localhost:8080/journal/id/1 \
--H "Content-Type: application/json" \
--d '{
-  "title": "Updated Journal",
-  "content": "This is my updated journal content."
-}'
-```
-
----
 
 ## 🗑️ Delete a Journal Entry
 
@@ -255,6 +221,19 @@ http://localhost:8080
 
 ---
 
+# 🍃 MongoDB Configuration
+
+This application uses **MongoDB** for persistent data storage.
+
+Before running the application, make sure MongoDB is available and configured for your environment.
+
+Configure your MongoDB connection in:
+
+```text
+src/main/resources/application.properties
+
+---
+
 # 🧪 Testing
 
 You can test the REST APIs using:
@@ -266,7 +245,7 @@ You can test the REST APIs using:
 ### Example API Flow
 
 ```text
-Create Journal
+CCreate Journal
       ↓
 POST /journal
       ↓
@@ -278,25 +257,21 @@ Get Journal by ID
       ↓
 GET /journal/id/{id}
       ↓
-Update Journal
-      ↓
-PUT /journal/id/{id}
-      ↓
 Delete Journal
       ↓
 DELETE /journal/id/{id}
 ```
 
 ---
-
 # 📌 Current Implementation
 
-The application currently uses an **in-memory `HashMap`** to store journal entries.
+The application uses **MongoDB** for storing and managing journal entries.
 
-This makes the project lightweight and useful for learning and demonstrating the core concepts of Spring Boot REST API development.
+**Spring Data MongoDB** is used to interact with the MongoDB database from the Spring Boot application.
 
-> ⚠️ Since the data is stored in memory, journal entries are not persisted after the application is restarted.
+The application provides REST APIs for creating, retrieving, and deleting journal entries.
 
+> 🍃 MongoDB provides persistent storage, so journal entries are retained even after the application is restarted.
 ---
 
 # 🎯 Learning Objectives
@@ -309,12 +284,14 @@ This project demonstrates practical understanding of:
 - HTTP methods
 - `@GetMapping`
 - `@PostMapping`
-- `@PutMapping`
 - `@DeleteMapping`
 - `@RequestBody`
 - `@PathVariable`
+- Spring Data MongoDB
+- MongoDB database integration
+- MongoDB document management
+- Persistent data storage
 - CRUD operations
-- In-memory data management
 - Maven project management
 
 ---
